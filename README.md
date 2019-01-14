@@ -1,2 +1,2 @@
-# DomainDriven.Repository
-Domain Driven Design Repository pattern implemented in .Net Core
+# DomainDriven
+Domain Driven Design architectural patterns implemented in .Net Core
