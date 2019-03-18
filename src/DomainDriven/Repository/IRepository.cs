@@ -19,7 +19,7 @@ namespace DomainDriven.Repository
         Task<T> FirstOrDefault<T>(Specification<T> specification) where T : class, IPersistentObject;
         Exception LastException { get; }
         // Task Execute(ICommand command);
-        void Add<T>(T value) where T : class, IPersistentObject;
+        Task Add<T>(T value) where T : class, IPersistentObject;
         void Remove<T>(T value) where T : class, IPersistentObject;
         Task SaveChanges();
     }

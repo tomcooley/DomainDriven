@@ -19,9 +19,9 @@ namespace DomainDriven.Repository
 
         public Exception LastException => throw new NotImplementedException();
 
-        public void Add<T>(T value) where T : class, IPersistentObject
+        public async Task Add<T>(T value) where T : class, IPersistentObject
         {
-            _dbContext.Set<T>().Add(value);
+            await _dbContext.Set<T>().AddAsync(value);
         }
 
         // public async Task Execute(ICommand command)
