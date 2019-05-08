@@ -24,11 +24,6 @@ namespace DomainDriven.Repository
             await _dbContext.Set<T>().AddAsync(value);
         }
 
-        // public async Task Execute(ICommand command)
-        // {
-            // await _dbContext.Database.ExecuteSqlCommandAsync()
-        // }
-
         public async Task<IEnumerable<T>> Find<T>(Specification<T> specification) where T : class, IPersistentObject
         {
             return await _dbContext.Set<T>().Where(specification).ToListAsync();
@@ -48,11 +43,6 @@ namespace DomainDriven.Repository
 
             return new PagedResult<T>(results, itemCount, skip, itemsPerPage);
         }
-
-        // public async Task<IEnumerable<T>> Find<T>(IQuery<T> query) where T : class, IPersistentObject
-        // {
-            // throw new NotImplementedException();
-        // }
 
         public async Task<IEnumerable<T>> FindEditable<T>(Specification<T> specification) where T : class, IPersistentObject
         {
@@ -103,7 +93,7 @@ namespace DomainDriven.Repository
         {
             if (specification == null)
             {
-                throw new ArgumentNullException("specification");
+                throw new ArgumentNullException(nameof(specification));
             }
 
             var query = _dbContext.Set<T>().Where(specification);
@@ -120,6 +110,7 @@ namespace DomainDriven.Repository
             }
             return query;
         }
+
         #region IDisposable
 
         // Flag: Has Dispose already been called?
